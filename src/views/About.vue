@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="about-container">
+  <div class="about-container container">
     <div class="columns is-mobile">
       <div class="column is-offset-1 is-one-quarter">
         <img src="https://i.ibb.co/Cb6grB5/IMG-4494-3.jpg" alt="IMG-4494-3" border="0" class="my-face"/>
@@ -8,9 +8,9 @@
         <div class="green-text">
           Hello! my name is Wut. I am a web application developer, and I live in Marietta, Georgia.
         </div>
-        <i class="fab fa-github"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-facebook"></i>
+        <i class="fab fa-github" @click="openInNewTab('https://github.com/wmanintu')"></i>
+        <i class="fab fa-instagram" @click="openInNewTab('https://www.instagram.com/wohmgram/')"></i>
+        <i class="fab fa-facebook" @click="openInNewTab('https://www.facebook.com/wutmanintu')"></i>
       </div>
     </div>
   </div>
@@ -18,6 +18,11 @@
 
 <script>
 export default {
+  methods: {
+    openInNewTab (url) {
+      window.open(url,'_blank')
+    }
+  }
 }
 </script>
 
@@ -33,5 +38,8 @@ export default {
 .fab {
   margin: 5px;
   font-size: 30px;
+}
+.fab:hover {
+  cursor: pointer;
 }
 </style>

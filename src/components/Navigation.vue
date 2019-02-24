@@ -22,9 +22,7 @@
 
 <script>
 export default {
-  created () {
-    activeRouteName: this.$router.name
-  },
+  created () {},
   methods: {
     redirect (routeName) {
       this.$router.push({ name: routeName })
@@ -38,5 +36,20 @@ export default {
 .content-margin {
   margin: 100px;
 }
-
+.link-orange:hover {
+  cursor: pointer;
+  color: #ca7242;
+}
+.link-purple:hover {
+  cursor: pointer;
+  color: #aa67d3;
+}
+.link-green:hover {
+  cursor: pointer;
+  color: #77bc6a;
+}
+.link-red:hover {
+  cursor: pointer;
+  color: #c95766;
+}
 </style>
