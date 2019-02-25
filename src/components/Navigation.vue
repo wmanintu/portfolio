@@ -22,7 +22,6 @@
 
 <script>
 export default {
-  created () {},
   methods: {
     redirect (routeName) {
       this.$router.push({ name: routeName })
