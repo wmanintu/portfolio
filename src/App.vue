@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <Navigation/>
-    <router-view></router-view>
+    <div class="container is-fluid">
+      <Navbar/>
+      <div class="content">
+        <router-view></router-view>
+      </div>
+    </div>
+    
   </div>
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'app',
   components: {
-    Navigation
+    Navbar
   }
 }
 </script>
@@ -19,7 +24,6 @@ export default {
 <style>
 #app {
   font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
-  /* font-family: "Maison Neue", Helvetica Neue, Helvetica, Arial, sans-serif; */
   font-size: 14px;
   user-select: none;
 }
@@ -29,5 +33,15 @@ export default {
 }
 .btest {
   border: 1px solid white;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+@media (min-width: 740px) {
+  .content {
+    margin-top: 100px;
+  }
 }
 </style>
