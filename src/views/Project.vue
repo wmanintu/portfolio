@@ -23,11 +23,7 @@
       </div>
       <div class="tile is-parent">
         <article class="tile is-child notification is-danger">
-          <p class="title">Youtube Queue</p>
-          <p class="subtitle">Aligned with the right tile</p>
-          <div class="content">
-            <!-- Content -->
-          </div>
+          <YouTubeQueueArticle/>
         </article>
       </div>
     </div>
@@ -47,9 +43,11 @@
 
 <script>
 import PreOrderArticle from '../components/PreOrderArticle'
+import YouTubeQueueArticle from '../components/YouTubeQueueArticle'
 export default {
   components: {
-    PreOrderArticle
+    PreOrderArticle,
+    YouTubeQueueArticle
   }
 }
 </script>
