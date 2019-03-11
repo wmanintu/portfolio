@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="home-container">
     <div class="columns">
       <div class="column is-12-mobile is-3-tablet is-4-desktop my-avatar-container">
         <img src="https://i.ibb.co/Cb6grB5/IMG-4494-3.jpg" alt="IMG-4494-3" border="0" class="my-face"/>
@@ -42,5 +42,10 @@ export default {
 }
 .fab:hover, .fas:hover {
   cursor: pointer;
+}
+@media (min-width: 740px) {
+  .home-container {
+    margin-top: 200px;
+  }
 }
 </style>

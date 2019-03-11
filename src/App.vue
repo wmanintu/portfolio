@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container is-fluid">
       <Navbar/>
-      <div class="content">
+      <div>
         <router-view></router-view>
       </div>
     </div>
@@ -38,10 +38,5 @@ export default {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-}
-@media (min-width: 740px) {
-  .content {
-    margin-top: 100px;
-  }
 }
 </style>
