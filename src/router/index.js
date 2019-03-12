@@ -19,7 +19,7 @@ export default new Router({
       component: Project
     },
     {
-      path: '/*',
+      path: '*',
       component: Home
     }
   ]
