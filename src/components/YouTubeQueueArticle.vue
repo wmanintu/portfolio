@@ -5,7 +5,7 @@
     <div class="content">
       React - Redux - Youtube API - Bootstrap
     </div>
-    <i class="fas fa-external-link-alt" @click="openUrl('https://tidal-horizon-233700.firebaseapp.com')"></i>
+    <i class="fas fa-globe-americas" @click="openUrl('https://tidal-horizon-233700.firebaseapp.com')"></i>
     <i class="fab fa-github" @click="openUrl('https://github.com/wmanintu/youtube-queue')"></i>
   </div>
 </template>
