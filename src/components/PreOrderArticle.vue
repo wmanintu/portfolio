@@ -7,7 +7,7 @@
     <div class="content">
       Vue - Firebase Auth - Firebase Firestore - Element.io
     </div>
-    <i class="fas fa-globe-americas" @click="openUrl('https://preorder-8a6e9.firebaseapp.com/menu-list')"></i>
+    <i class="fas fa-globe-americas" @click="openUrl('https://preorder-8a6e9.firebaseapp.com')"></i>
     <i class="fab fa-github" @click="openUrl('https://github.com/wmanintu/preorder')"></i>
   </div>
 </template>
