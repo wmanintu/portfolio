@@ -9,7 +9,7 @@
     <div class="content">
       React - Imgur - Bulma - Netlify
     </div>
-    <i class="fas fa-globe-americas" @click="openUrl('https://upbeat-fermi-00bd6b.netlify.com')"></i>
+    <i class="fas fa-globe-americas" @click="openUrl('https://photos.wutmanintu.me')"></i>
     <i class="fab fa-github" @click="openUrl('https://github.com/wmanintu/my-photo-gallery')"></i>
   </div>
 </template>
