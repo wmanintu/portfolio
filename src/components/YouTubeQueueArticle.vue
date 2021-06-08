@@ -5,7 +5,7 @@
     <div class="content">
       React - Redux - Youtube API - Bootstrap
     </div>
-    <i class="fas fa-globe-americas" @click="openUrl('https://videos.wutmanintu.com')"></i>
+    <i class="fas fa-globe-americas" @click="openUrl('https://videos.wutmanintu.me')"></i>
     <i class="fab fa-github" @click="openUrl('https://github.com/wmanintu/youtube-queue')"></i>
   </div>
 </template>
