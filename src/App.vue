@@ -3,14 +3,18 @@
     <div class="container is-fluid">
       <Navbar />
       <div>
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+          <transition name="fade" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+import Navbar from "./components/Navbar.vue";
 
 export default {
   name: "app",
@@ -37,5 +41,14 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
