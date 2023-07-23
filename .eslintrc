@@ -1,5 +1,0 @@
-// .eslintrc
-// remove
-parserOptions: {
-    parser: "babel-eslint",
-},
