@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
 	<div class="tile is-ancestor">
 		<div class="tile is-vertical is-6">
 			<div class="tile">
@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import PreOrderArticle from "../components/PreOrderArticle"
-import YouTubeQueueArticle from "../components/YouTubeQueueArticle"
-import PhotoGalleryArticle from "../components/PhotoGalleryArticle"
+import PreOrderArticle from "../components/PreOrderArticle.vue"
+import YouTubeQueueArticle from "../components/YouTubeQueueArticle.vue"
+import PhotoGalleryArticle from "../components/PhotoGalleryArticle.vue"
 
 export default {
 	components: {
@@ -40,4 +40,4 @@ export default {
 }
 </script>
 
-<style lang="css" scoped></style>
+<style scoped></style>
