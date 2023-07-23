@@ -17,6 +17,7 @@
           </strong>
         </div>
       </div>
+      <div class="column">contact</div>
     </div>
   </div>
 </template>
