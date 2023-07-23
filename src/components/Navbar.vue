@@ -1,13 +1,16 @@
 <template>
   <div class="nav">
-    <div class="columns">
-      <div class="column is-12-mobile">
+    <div class="columns is-mobile">
+      <div class="column">
         <strong class="link-orange" @click="redirect('home')"
           >W U T <br />
           M A N I N T U</strong
         >
       </div>
-      <div class="column is-12-mobile">
+      <div class="column is-hidden-desktop has-text-right">
+        <a @click="mailTo">contact</a>
+      </div>
+      <div class="column is-hidden-mobile">
         <div class="nav-option-container has-text-centered">
           /<strong :class="handleActiveHome()" @click="redirect('home')">
             Home
@@ -17,8 +20,18 @@
           </strong>
         </div>
       </div>
-      <div class="column has-text-right">
-        <a>contact</a>
+      <div class="column has-text-right is-hidden-touch">
+        <a @click="mailTo">contact</a>
+      </div>
+    </div>
+    <div class="column is-hidden-desktop">
+      <div class="nav-option-container has-text-centered">
+        /<strong :class="handleActiveHome()" @click="redirect('home')">
+          Home
+        </strong>
+        /<strong :class="handleActivePoject()" @click="redirect('project')">
+          Project
+        </strong>
       </div>
     </div>
   </div>
@@ -49,6 +62,9 @@ export default {
       } else {
         return "option-name link-green";
       }
+    },
+    mailTo() {
+      window.location.href = "mailto:manintu.wut@gmail.com";
     },
   },
 };
