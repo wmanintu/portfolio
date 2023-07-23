@@ -1,12 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import 'bulma/css/bulma.css'
-import 'bulmaswatch/darkly/bulmaswatch.min.css'
+import { createApp } from "vue";
+import router from "./router";
+import App from "./App.vue";
 
-Vue.config.productionTip = false
+// import "bulma/css/bulma.css";
+// import "bulmaswatch/darkly/bulmaswatch.min.css";
 
-new Vue({
-  render: h => h(App),
-  router
-}).$mount('#app')
+createApp(App)
+  .use(router)
+  .mount("#app");

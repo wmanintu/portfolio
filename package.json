@@ -3,25 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@vitejs/plugin-vue": "^1.6.1",
+    "@vue/compat": "^3.3.4",
     "bulma": "^0.7.4",
     "bulmaswatch": "^0.7.2",
     "react-bulma-components": "^2.3.0",
-    "vue": "^2.6.6",
-    "vue-router": "^3.0.2"
+    "vite": "^2.5.4",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-plugin-eslint": "^3.4.0",
-    "@vue/cli-service": "^3.4.0",
-    "babel-eslint": "^10.0.1",
+    "@vue/compiler-sfc": "^3.3.4",
     "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "eslint-plugin-vue": "^5.0.0"
   },
   "eslintConfig": {
     "root": true,
@@ -35,11 +34,6 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
     }
   },
   "browserslist": [

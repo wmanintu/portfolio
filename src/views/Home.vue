@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
 	<div class="home-container">
 		<div class="columns">
 			<div
@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 .my-face {
 	border-radius: 400px;
 	width: 200px;

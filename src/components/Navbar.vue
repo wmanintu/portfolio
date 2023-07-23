@@ -1,15 +1,18 @@
 <template>
   <div class="nav">
     <div class="columns">
-      <div class="column is-12-mobile"><strong class="link-orange" @click="redirect('home')">W U T <br> M A N I N T U</strong></div>
+      <div class="column is-12-mobile">
+        <strong class="link-orange" @click="redirect('home')"
+          >W U T <br />
+          M A N I N T U</strong
+        >
+      </div>
       <div class="column is-12-mobile">
         <div class="nav-option-container">
-          /<strong :class="handleActiveHome()"
-          @click="redirect('home')">
+          /<strong :class="handleActiveHome()" @click="redirect('home')">
             Home
           </strong>
-          /<strong :class="handleActivePoject()"
-          @click="redirect('project')">
+          /<strong :class="handleActivePoject()" @click="redirect('project')">
             Project
           </strong>
         </div>
@@ -20,32 +23,32 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      activeName: 'home'
-    }
+      activeName: "home",
+    };
   },
   methods: {
-    redirect (routeName) {
-      this.activeName = routeName
-      this.$router.push({ name: routeName })
+    redirect(routeName) {
+      this.activeName = routeName;
+      this.$router.push({ name: routeName });
     },
-    handleActiveHome () {
-      if (this.$route.name === 'home') {
-        return 'option-name link-purple purple'
+    handleActiveHome() {
+      if (this.$route.name === "home") {
+        return "option-name link-purple purple";
       } else {
-        return 'option-name link-purple'
+        return "option-name link-purple";
       }
     },
-    handleActivePoject () {
-      if (this.$route.name === 'project') {
-        return 'option-name link-green green'
+    handleActivePoject() {
+      if (this.$route.name === "project") {
+        return "option-name link-green green";
       } else {
-        return 'option-name link-green'
+        return "option-name link-green";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

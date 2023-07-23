@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <div class="container is-fluid">
-      <Navbar/>
+      <Navbar />
       <div>
         <router-view></router-view>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -14,11 +13,11 @@
 import Navbar from './components/Navbar.vue'
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Navbar
-  }
-}
+    Navbar,
+  },
+};
 </script>
 
 <style>
@@ -35,8 +34,8 @@ export default {
   border: 1px solid white;
 }
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 </style>
