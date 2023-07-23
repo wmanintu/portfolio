@@ -8,7 +8,7 @@
         >
       </div>
       <div class="column is-12-mobile">
-        <div class="nav-option-container">
+        <div class="nav-option-container has-text-centered">
           /<strong :class="handleActiveHome()" @click="redirect('home')">
             Home
           </strong>
@@ -17,7 +17,9 @@
           </strong>
         </div>
       </div>
-      <div class="column">contact</div>
+      <div class="column has-text-right">
+        <a>contact</a>
+      </div>
     </div>
   </div>
 </template>
@@ -93,5 +95,9 @@ export default {
   .nav-option-container {
     text-align: right;
   }
+}
+
+.contact-button:hover {
+  cursor: pointer;
 }
 </style>

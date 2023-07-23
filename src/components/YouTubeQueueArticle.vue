@@ -8,7 +8,7 @@
     <div class="content">React - Redux - Youtube API - Bootstrap</div>
     <i
       class="fas fa-globe-americas"
-      @click="openUrl('https://videos.wutmanintu.me')"
+      @click="openUrl('https://music.wutmanintu.me')"
     ></i>
     <i
       class="fab fa-github"
