@@ -2,37 +2,41 @@
 @import "./node_modules/bulma/bulma.sass";
 
 .app.dark {
-	background-color: $dark;
-	color: $light;
-	min-height: 100vh;
+  background-color: $dark;
+  color: $light;
+  min-height: 100vh;
 }
 
 .app.dark .title {
-	color: $light;
+  color: $light;
 }
 
 .app.dark .subtitle {
-	color: $light;
+  color: $light;
 }
 
 .app.dark strong {
-	color: $light;
+  color: $light;
 }
 
 .app.dark .card {
-	background-color: $dark;
-	border-style: solid;
-	border-color: rgb(59, 59, 59);
-	border-radius: 32px;
+  background-color: $dark;
+  border-style: solid;
+  border-color: rgb(59, 59, 59);
+  border-radius: 32px;
 }
 
 .app .card {
-	background-color: $light;
-	border-style: solid;
-	border-color: $light;
-	border-radius: 32px;
+  background-color: $light;
+  border-style: solid;
+  border-color: $light;
+  border-radius: 32px;
 }
 
 .app.dark .card .content {
-	color: white;
+  color: white;
+}
+
+.card {
+  height: 100%;
 }
