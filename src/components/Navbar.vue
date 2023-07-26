@@ -2,36 +2,34 @@
 	<div class="nav">
 		<div class="columns is-mobile">
 			<div class="column">
-				<strong class="link-orange" @click="redirect('home')"
-					>W U T <br />
-					M A N I N T U</strong
-				>
+				<div class="link-orange" @click="redirect('home')">
+					W U T <br />
+					M A N I N T U
+				</div>
 			</div>
 			<div class="column is-hidden-desktop has-text-right">
-				<a @click="mailTo">contact</a>
+				<div class="contact" @click="mailTo">contact</div>
 			</div>
 			<div class="column is-hidden-touch">
 				<div class="nav-option-container has-text-centered">
-					/<strong :class="handleActiveHome()" @click="redirect('home')">
-						Home
-					</strong>
-					/<strong :class="handleActivePoject()" @click="redirect('project')">
+					<div :class="handleActiveHome()" @click="redirect('home')">Home</div>
+					|
+					<div :class="handleActivePoject()" @click="redirect('project')">
 						Project
-					</strong>
+					</div>
 				</div>
 			</div>
 			<div class="column has-text-right is-hidden-touch">
-				<a @click="mailTo">contact</a>
+				<div class="contact" @click="mailTo">contact</div>
 			</div>
 		</div>
 		<div class="column is-hidden-desktop">
 			<div class="nav-option-container has-text-centered">
-				/<strong :class="handleActiveHome()" @click="redirect('home')">
-					Home
-				</strong>
-				/<strong :class="handleActivePoject()" @click="redirect('project')">
+				<div :class="handleActiveHome()" @click="redirect('home')">Home</div>
+				|
+				<div :class="handleActivePoject()" @click="redirect('project')">
 					Project
-				</strong>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -72,11 +70,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.contact:hover {
+	color: #485fc7;
+	cursor: pointer;
+}
 .nav {
-	margin: 50px 0px 30px 0px;
+	padding: 50px 30px 30px 30px;
 }
 .option-name {
 	margin: 0px 10px 0px 10px;
+	font-weight: bold;
+	display: inline-block;
 }
 .purple {
 	cursor: pointer;
@@ -102,11 +106,7 @@ export default {
 	cursor: pointer;
 	color: #c95766;
 }
-@media (max-width: 740px) {
-	.nav {
-		margin: 10px;
-	}
-}
+
 @media (min-width: 740px) {
 	.nav-option-container {
 		text-align: right;

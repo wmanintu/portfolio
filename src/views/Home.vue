@@ -1,60 +1,56 @@
 <template>
-  <div class="home-container">
-    <div class="columns">
-      <div
-        class="column is-12-mobile is-3-tablet is-4-desktop my-avatar-container"
-      >
-        <img
-          src="https://i.ibb.co/Cb6grB5/IMG-4494-3.jpg"
-          alt="IMG-4494-3"
-          border="0"
-          class="my-face"
-        />
-      </div>
-      <div class="column is-12-mobile is-9-tablet is-8-desktop">
-        <div class="green-text">
-          Hello! my name is Wut.<br />I am a Front-End Developer.
-        </div>
-        <i class="fab fa-github" @click="openUrl"></i>
-        <i class="fas fa-envelope" @click="mailTo"></i>
-      </div>
-    </div>
-  </div>
+	<div>
+		<div class="columns">
+			<div class="column"></div>
+			<div class="column is-four-fifths-touch is-three-fifths-desktop">
+				<div class="wrapper">
+					<div class="item1">
+						<ProfileCard />
+					</div>
+					<div class="item2"><DarkModeCard /></div>
+					<div class="item3 ></div> <div class=" item4></div>
+				</div>
+			</div>
+			<div class="column"></div>
+		</div>
+	</div>
 </template>
 
-<script>
-export default {
-  methods: {
-    mailTo() {
-      window.location.href = "mailto:manintu.wut@gmail.com";
-    },
-    openUrl(url) {
-      window.open("https://github.com/wmanintu", "_blank");
-    },
-  },
-};
+<script setup>
+import DarkModeCard from "../components/DarkModeCard.vue"
+import ProfileCard from "../components/ProfileCard.vue"
+
+function openUrl(url) {
+	window.open("https://github.com/wmanintu", "_blank")
+}
 </script>
 
 <style scoped>
-.my-face {
-  border-radius: 400px;
-  width: 200px;
+.green {
+	background-color: green;
 }
-.my-avatar-container {
-  text-align: center;
+.wrapper {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: repeat(6, auto);
+	/* height: 100%; */
+	/* width: 100%; */
+	gap: 12px;
+	grid-template-areas:
+		"a a b c"
+		"a a d e"
+		"f f f f";
 }
-.fab,
-.fas {
-  margin: 15px;
-  font-size: 30px;
+.item1 {
+	grid-area: a;
 }
-.fab:hover,
-.fas:hover {
-  cursor: pointer;
+.item2 {
+	grid-area: b;
 }
-@media (min-width: 740px) {
-  .home-container {
-    margin-top: 200px;
-  }
+.item3 {
+	grid-area: c;
+}
+.item4 {
+	grid-area: d;
 }
 </style>
