@@ -4,18 +4,20 @@
       <font-awesome-icon icon="fa-brands fa-github " size="7x" />
       <br />
     </div>
-    <div class="">
-      <a class="expand-container">
-        <p class="expand-title">GitHub</p>
-        <div class="expand-icon">
-          <font-awesome-icon icon="fa-solid fa-arrow-right" />
-        </div>
-      </a>
-    </div>
+    <a class="expand-container" @click.stop.prevent="openGitHubSite">
+      <p class="expand-title">GitHub</p>
+      <div class="expand-icon">
+        <font-awesome-icon icon="fa-solid fa-arrow-right" />
+      </div>
+    </a>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+function openGitHubSite() {
+  window.open("https://github.com/wmanintu", "_blank");
+}
+</script>
 
 <style lang="scss" scoped>
 .expand-container {

@@ -4,6 +4,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins");
 
 $Poppins-font: "Poppins", sans-serif;
+$card-border-dark: rgb(112, 112, 112);
+$card-border-light: rgb(228, 228, 228);
 
 .app.dark {
   background-color: $dark;
@@ -26,7 +28,7 @@ $Poppins-font: "Poppins", sans-serif;
 .app.dark .card {
   background-color: $dark;
   border-style: solid;
-  border-color: rgb(59, 59, 59);
+  border-color: $card-border-dark;
   color: $light;
   border-radius: 32px;
 }
@@ -34,7 +36,7 @@ $Poppins-font: "Poppins", sans-serif;
 .app .card {
   background-color: $light;
   border-style: solid;
-  border-color: $light;
+  border-color: $card-border-light;
   border-radius: 32px;
 }
 
@@ -50,11 +52,11 @@ $Poppins-font: "Poppins", sans-serif;
 
 // Animated expand button
 
-$box-shadow-dark: rgb(112, 112, 112) 0px 0px 0px 2px;
-$box-shadow-dark-hover: rgb(112, 112, 112) 0px 0px 0px 5px;
+$box-shadow-dark: $card-border-dark 0px 0px 0px 2px;
+$box-shadow-dark-hover: $card-border-dark 0px 0px 0px 5px;
 
-$box-shadow-light: rgb(228, 228, 228) 0px 0px 0px 2px;
-$box-shadow-light-hover: rgb(228, 228, 228) 0px 0px 0px 5px;
+$box-shadow-light: $card-border-light 0px 0px 0px 2px;
+$box-shadow-light-hover: $card-border-light 0px 0px 0px 5px;
 
 .dark .expand-container {
   background-color: $dark;
