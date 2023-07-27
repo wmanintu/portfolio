@@ -1,13 +1,11 @@
 <template>
 	<div :class="{ app: true, dark: isDark }">
-		<!-- <div class="container is-fluid"> -->
 		<Navbar />
 		<router-view v-slot="{ Component }">
 			<transition name="fade" mode="out-in">
 				<component :is="Component" />
 			</transition>
 		</router-view>
-		<!-- </div> -->
 	</div>
 </template>
 

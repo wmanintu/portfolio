@@ -2,7 +2,7 @@
 	<div class="nav">
 		<div class="columns is-mobile">
 			<div class="column">
-				<div class="link-orange" @click="redirect('home')">
+				<div class="link-orange my-name" @click="redirect('home')">
 					W U T <br />
 					M A N I N T U
 				</div>
@@ -68,8 +68,14 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.link-orange {
+	display: inline-block;
+}
+.contact {
+	display: inline-block;
+	text-align: right;
+}
 .contact:hover {
 	color: #485fc7;
 	cursor: pointer;
@@ -111,9 +117,5 @@ export default {
 	.nav-option-container {
 		text-align: right;
 	}
-}
-
-.contact-button:hover {
-	cursor: pointer;
 }
 </style>
