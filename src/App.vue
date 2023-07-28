@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import Navbar from "./components/Navbar.vue"
+import Navbar from "./components/Navbar"
 import { useDark } from "@vueuse/core"
 
 const isDark = useDark()

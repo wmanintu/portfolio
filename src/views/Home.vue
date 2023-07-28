@@ -1,83 +1,56 @@
 <template>
-  <div>
-    <div class="flex-container">
-      <div class="wrapper">
-        <div class="item1">
-          <ProfileCard />
-        </div>
-        <div class="item2"><DarkModeCard /></div>
-        <div class="item3"><GitHubCard /></div>
-        <div class="item4"></div>
-      </div>
-    </div>
-  </div>
+	<div class="grid-container">
+		<div class="wrapper">
+			<div class="two-column">
+				<ProfileCard />
+			</div>
+			<div><DarkModeCard /></div>
+			<div><GitHubCard /></div>
+		</div>
+	</div>
 </template>
 
 <script setup>
-import DarkModeCard from "../components/DarkModeCard.vue";
-import ProfileCard from "../components/ProfileCard.vue";
-import GitHubCard from "../components/GitHubCard.vue";
+import DarkModeCard from "../components/DarkModeCard"
+import ProfileCard from "../components/ProfileCard"
+import GitHubCard from "../components/GitHubCard"
 </script>
 
 <style scoped>
-/*  1024px --> desktop */
-@media screen and (min-width: 1024px) {
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1rem;
-    grid-template-areas:
-      "a a b c"
-      ". . . .";
-  }
-  .flex-container {
-    padding: 0px 15%;
-  }
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: masonry;
+	gap: 1rem;
+	width: 50%;
 }
-/* table <-- 1023px */
+.grid-container {
+	display: grid;
+	place-items: center;
+}
+/* <-- 1024px */
+@media screen and (max-width: 1400px) {
+	.wrapper {
+		width: 60%;
+	}
+}
+
+/* <-- 1023px */
 @media screen and (max-width: 1023px) {
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1rem;
-    grid-template-areas:
-      "a a b c"
-      ". . . .";
-  }
-  .flex-container {
-    padding: 0px 10%;
-  }
+	.wrapper {
+		width: 70%;
+	}
 }
 
-/* mobile <-- 768px */
+/* <-- 768px */
 @media screen and (max-width: 768px) {
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1rem;
-    grid-template-areas:
-      "a a "
-      "b c ";
-  }
-  .flex-container {
-    padding: 0px 10px;
-  }
+	.wrapper {
+		grid-template-columns: repeat(2, 1fr);
+		width: 90%;
+	}
 }
 
-.flex-container {
-  display: flex;
-  justify-content: center;
-}
-.item1 {
-  grid-area: a;
-}
-.item2 {
-  grid-area: b;
-}
-.item3 {
-  grid-area: c;
+.two-column {
+	grid-column: 2 span;
 }
 </style>
