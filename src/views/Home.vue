@@ -6,6 +6,7 @@
 			</div>
 			<div><DarkModeCard /></div>
 			<div><GitHubCard /></div>
+			<div><SpotifyCard /></div>
 			<div class="two-column"><TimeCard /></div>
 		</div>
 	</div>
@@ -15,7 +16,8 @@
 import DarkModeCard from "../components/DarkModeCard"
 import ProfileCard from "../components/ProfileCard"
 import GitHubCard from "../components/GitHubCard"
-import TimeCard from "../components/TimeCard.vue"
+import TimeCard from "../components/TimeCard"
+import SpotifyCard from "../components/SpotifyCard"
 </script>
 
 <style scoped>
