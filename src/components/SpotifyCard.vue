@@ -60,7 +60,6 @@ const getAccessToken = async () => {
 }
 
 const getCurrentSong = async () => {
-	console.log(accessToken.value)
 	try {
 		const response = await fetch(
 			"https://api.spotify.com/v1/me/player/recently-played?limit=1",
@@ -73,7 +72,6 @@ const getCurrentSong = async () => {
 
 		if (response.ok) {
 			const data = await response.json()
-			console.log("currentSong", data.items[0].track)
 			let { name, artists, album } = data.items[0].track
 			currentSong.value = {
 				name: name,
