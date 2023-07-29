@@ -2,9 +2,8 @@
   <div class="nav">
     <div class="columns is-mobile">
       <div class="column">
-        <div class="link-orange my-name" @click="redirect('home')">
-          W U T <br />
-          M A N I N T U
+        <div class="link-orange gradient-text" @click="redirect('home')">
+          W U T
         </div>
       </div>
       <div class="column is-hidden-desktop has-text-right">
@@ -116,6 +115,37 @@ export default {
 @media (min-width: 740px) {
   .nav-option-container {
     text-align: right;
+  }
+}
+
+.gradient-text {
+  --bg-size: 400%;
+  --color-one: hsl(0deg 95% 55%);
+  --color-two: hsl(111.82deg 68.62% 53.02%);
+  --color-three: hsl(237.94deg 95% 55%);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: clamp(3rem, 25vmin, 1rem);
+  background: linear-gradient(
+      90deg,
+      var(--color-one),
+      var(--color-two),
+      var(--color-three)
+    )
+    0 0 / var(--bg-size) 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gradient-text {
+    animation: move-bg 8s linear infinite;
+  }
+  @keyframes move-bg {
+    to {
+      background-position: var(--bg-size) 0;
+    }
   }
 }
 </style>

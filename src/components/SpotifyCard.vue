@@ -13,8 +13,12 @@
 						<span>last played</span>
 					</div>
 					<!-- <img :src="currentSong.albumImage" :alt="currentSong.name" /> -->
-					<strong>{{ currentSong.name }}</strong>
-					<p>{{ currentSong.artist }}</p>
+					<strong class="track-name" :title="currentSong.name">{{
+						currentSong.name
+					}}</strong>
+					<p class="artist-names" :title="currentSong.artist">
+						{{ currentSong.artist }}
+					</p>
 				</div>
 			</div>
 			<div class="spotify-loading" v-else>
@@ -91,6 +95,15 @@ onMounted(getAccessToken)
 
 <style lang="scss" scoped>
 $spotify-color: #1db954;
+
+.track-name,
+.artist-names {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
 
 .spotify-now-playing {
 	display: flex;
