@@ -6,7 +6,7 @@
 			</div>
 			<div><DarkModeCard /></div>
 			<div><GitHubCard /></div>
-			<div><SpotifyCard /></div>
+			<div c><SpotifyCard /></div>
 			<div class="two-column"><TimeCard /></div>
 		</div>
 	</div>
@@ -24,13 +24,17 @@ import SpotifyCard from "../components/SpotifyCard"
 .wrapper {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
 	gap: 1rem;
 	width: 50%;
 }
 .grid-container {
 	display: grid;
 	place-items: center;
+}
+
+.two-column {
+	grid-column: 2 span;
 }
 /* <-- 1024px */
 @media screen and (max-width: 1400px) {
@@ -55,7 +59,13 @@ import SpotifyCard from "../components/SpotifyCard"
 	}
 }
 
-.two-column {
-	grid-column: 2 span;
+/* iPhone SE */
+@media screen and (max-width: 380px) {
+	.wrapper {
+		grid-template-columns: 1fr;
+	}
+	.two-column {
+		grid-column: 1 span;
+	}
 }
 </style>
