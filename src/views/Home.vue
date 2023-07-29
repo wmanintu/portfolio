@@ -6,7 +6,7 @@
 			</div>
 			<div><DarkModeCard /></div>
 			<div><GitHubCard /></div>
-			<div c><SpotifyCard /></div>
+			<div><SpotifyCard /></div>
 			<div class="two-column"><TimeCard /></div>
 		</div>
 	</div>
