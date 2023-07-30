@@ -11,9 +11,11 @@ import { faGithub, faSpotify } from "@fortawesome/free-brands-svg-icons"
 import {
 	faArrowRight,
 	faEarthAmericas,
+	faMinus,
+	faPlus,
 } from "@fortawesome/free-solid-svg-icons"
 
-library.add(faGithub, faArrowRight, faEarthAmericas, faSpotify)
+library.add(faGithub, faArrowRight, faEarthAmericas, faSpotify, faMinus, faPlus)
 
 createApp(App)
 	.component("font-awesome-icon", FontAwesomeIcon)

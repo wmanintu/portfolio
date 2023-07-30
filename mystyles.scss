@@ -9,51 +9,51 @@ $card-border-dark: rgb(112, 112, 112);
 $card-border-light: rgb(228, 228, 228);
 
 .app.dark {
-  background-color: $dark;
-  color: $light;
-  min-height: 100vh;
+	background-color: $dark;
+	color: $light;
+	min-height: 100vh;
 }
 
 .app.dark .title {
-  color: $light;
+	color: $light;
 }
 
 .app.dark .subtitle {
-  color: $light;
+	color: $light;
 }
 
 .app.dark strong {
-  color: $light;
+	color: $light;
 }
 
 .app.dark .card {
-  background-color: $dark;
-  border-style: solid;
-  border-color: $card-border-dark;
-  color: $light;
-  border-radius: 32px;
+	background-color: $dark;
+	border-style: solid;
+	border-color: $card-border-dark;
+	color: $light;
+	border-radius: 32px;
 }
 
 .app .card {
-  background-color: $light;
-  border-style: solid;
-  border-color: $card-border-light;
-  border-radius: 32px;
+	background-color: $light;
+	border-style: solid;
+	border-color: $card-border-light;
+	border-radius: 32px;
 }
 
 .app.dark .card .content {
-  color: white;
+	color: white;
 }
 
 .card {
-  font-family: $Poppins-font;
-  font-size: 16px;
-  height: 100%;
+	font-family: $Poppins-font;
+	font-size: 16px;
+	height: 100%;
 }
 
 strong {
-  font-family: $Corben-font;
-  font-size: 25px;
+	font-family: $Corben-font;
+	font-size: 25px;
 }
 
 // Animated expand button
@@ -65,20 +65,52 @@ $box-shadow-light: $card-border-light 0px 0px 0px 2px;
 $box-shadow-light-hover: $card-border-light 0px 0px 0px 5px;
 
 .dark .expand-container {
-  background-color: $dark;
-  color: $light;
-  box-shadow: $box-shadow-dark;
+	background-color: $dark;
+	color: $light;
+	box-shadow: $box-shadow-dark;
 }
 
 .dark .expand-container:hover {
-  box-shadow: $box-shadow-dark-hover;
+	box-shadow: $box-shadow-dark-hover;
 }
 
 .expand-container {
-  color: $dark;
-  box-shadow: $box-shadow-light;
+	color: $dark;
+	box-shadow: $box-shadow-light;
 }
 
 .expand-container:hover {
-  box-shadow: $box-shadow-light-hover;
+	box-shadow: $box-shadow-light-hover;
+}
+
+// Mapbox
+
+.mapboxgl-ctrl-logo {
+	display: none !important;
+}
+
+.mapboxgl-canvas-container.mapboxgl-interactive {
+	cursor: default;
+}
+
+.mapboxgl-canvas {
+	border-radius: 32px;
+}
+
+.app.dark .zoom-button {
+	background-color: $dark;
+	color: $light;
+	border-color: $card-border-dark;
+}
+.app.dark .zoom-button:hover {
+	box-shadow: $box-shadow-dark-hover;
+}
+
+.app .zoom-button {
+	background-color: $light;
+	color: $dark;
+	border-color: $card-border-light;
+}
+.app .zoom-button:hover {
+	box-shadow: $box-shadow-light-hover;
 }
