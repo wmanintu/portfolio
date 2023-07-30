@@ -1,11 +1,25 @@
 <template>
 	<div class="card">
-		<div id="map"></div>
+		<div id="map" :class="{ dark: isDark }"></div>
+		<div
+			v-show="button.isZoomOut"
+			class="zoom-button zoom-out"
+			@click="handleZoomOut()"
+		>
+			<font-awesome-icon icon="fa-solid fa-minus" />
+		</div>
+		<div
+			v-show="button.isZoomIn"
+			class="zoom-button zoom-in"
+			@click="handleZoomIn()"
+		>
+			<font-awesome-icon icon="fa-solid fa-plus" />
+		</div>
 	</div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue"
+import { ref, onMounted, onBeforeMount, watch } from "vue"
 import { useDark } from "@vueuse/core"
 import mapboxgl from "mapbox-gl"
 
@@ -13,8 +27,7 @@ const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
 const myMarkerPosition = [-84.550866, 33.997852]
 let isDark = useDark()
 let map = ref(null)
-let zoomOut = ref(null)
-let zoomIn = ref(null)
+let button = ref({ isZoomOut: true, isZoomIn: false })
 const zoomRange = ref([11, 5, 2])
 let currentZoomRange = ref({ index: 0, range: 11 })
 
@@ -28,67 +41,55 @@ const initMapboxGLJS = () => {
 		zoom: currentZoomRange.value.range, // starting zoom
 		dragPan: false,
 		scrollZoom: false,
+		doubleClickZoom: false,
+		keyboard: false,
 		logoPosition: "top-left",
 		attributionControl: false,
 	})
 
 	const marker = new mapboxgl.Marker().setLngLat(myMarkerPosition).addTo(map)
-
-	// Setup Zoom in and out
-	addZoomOutButtonToMapbox()
-	// addZoomInButtonToMapbox()
+	setTimeout(() => {
+		map.resize()
+	}, 100)
 }
-
+onBeforeMount(() => {})
 onMounted(initMapboxGLJS)
 
 // Handle zoom out button inside Mapbox
 
 const handleZoomOut = () => {
-	console.log("zoom-OUT:", map.getZoom())
-	console.log(currentZoomRange.value.index)
+	map.resize()
 	currentZoomRange.value.index++
-	map.setZoom(zoomRange.value[currentZoomRange.value.index])
-	currentZoomRange.value.range = map.getZoom()
-}
-
-const addZoomOutButtonToMapbox = () => {
-	zoomOut = new MapboxGLButtonControl({
-		className: "zoom-out",
-		eventHandler: handleZoomOut,
+	map.zoomTo(zoomRange.value[currentZoomRange.value.index], {
+		duration: 2000,
 	})
-	map.addControl(zoomOut, "bottom-left")
+	currentZoomRange.value.range = zoomRange.value[currentZoomRange.value.index]
+	setZoomVisibility()
 }
 
 // Handle zoom in button inside Mapbox
 
 const handleZoomIn = () => {
-	console.log("zoom-IN", map.getZoom())
 	currentZoomRange.value.index--
-	map.setZoom(zoomRange.value[currentZoomRange.value.index])
-	currentZoomRange.value.range = map.getZoom()
-}
-
-const addZoomInButtonToMapbox = () => {
-	zoomIn = new MapboxGLButtonControl({
-		className: "zoom-in",
-		eventHandler: handleZoomIn,
+	map.zoomTo(zoomRange.value[currentZoomRange.value.index], {
+		duration: 2000,
 	})
-	map.addControl(zoomIn, "bottom-right")
+	currentZoomRange.value.range = zoomRange.value[currentZoomRange.value.index]
+	setZoomVisibility()
 }
 
-watch(currentZoomRange.value, async (object) => {
-	console.log("watch", object)
-	if (object.range === 11) {
-		map.hasControl(zoomIn) ? map.removeControl(zoomIn) : null
-		map.hasControl(zoomOut) ? null : addZoomOutButtonToMapbox()
-	} else if (object.range === 2) {
-		map.hasControl(zoomIn) ? null : addZoomInButtonToMapbox()
-		map.hasControl(zoomOut) ? map.removeControl(zoomOut) : null
+const setZoomVisibility = () => {
+	if (currentZoomRange.value.index === 0) {
+		button.value.isZoomIn ? (button.value.isZoomIn = false) : null
+		button.value.isZoomOut ? null : (button.value.isZoomOut = true)
+	} else if (currentZoomRange.value.index === 2) {
+		button.value.isZoomIn ? null : (button.value.isZoomIn = true)
+		button.value.isZoomOut ? (button.value.isZoomOut = false) : null
 	} else {
-		map.hasControl(zoomIn) ? null : addZoomInButtonToMapbox()
-		map.hasControl(zoomOut) ? null : addZoomOutButtonToMapbox()
+		button.value.isZoomIn ? null : (button.value.isZoomIn = true)
+		button.value.isZoomOut ? null : (button.value.isZoomOut = true)
 	}
-})
+}
 
 // Handle map style according to web theme
 
@@ -103,35 +104,6 @@ watch(isDark, async (flag) => {
 		? map.setStyle("mapbox://styles/mapbox/navigation-night-v1")
 		: map.setStyle("mapbox://styles/mapbox/streets-v12")
 })
-
-// Generate Custom Mapbox's Button
-
-class MapboxGLButtonControl {
-	constructor({ className = "", title = "", eventHandler = evtHndlr }) {
-		this._className = className
-		this._title = title
-		this._eventHandler = eventHandler
-	}
-
-	onAdd(map) {
-		this._btn = document.createElement("button")
-		this._btn.className = "mapboxgl-ctrl-icon" + " " + this._className
-		this._btn.type = "button"
-		this._btn.title = this._title
-		this._btn.onclick = this._eventHandler
-
-		this._container = document.createElement("div")
-		this._container.className = "mapboxgl-ctrl-group mapboxgl-ctrl"
-		this._container.appendChild(this._btn)
-
-		return this._container
-	}
-
-	onRemove() {
-		this._container.parentNode.removeChild(this._container)
-		this._map = undefined
-	}
-}
 </script>
 
 <style lang="scss" scoped>
@@ -140,6 +112,32 @@ class MapboxGLButtonControl {
 	top: 0;
 	bottom: 0;
 	width: 100%;
-	border-radius: inherit;
+}
+
+.zoom-button {
+	opacity: 1;
+	transform: none;
+	border-style: solid;
+	border-width: 2px;
+	cursor: pointer;
+	width: 36px;
+	height: 36px;
+	border-radius: 18px;
+	position: absolute;
+	bottom: 14px;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	transition: box-shadow 0.2s ease 0s;
+	will-change: transform;
+	z-index: 1;
+}
+.zoom-button.zoom-out {
+	left: 14px;
+}
+.zoom-button.zoom-in {
+	right: 14px;
 }
 </style>
