@@ -6,70 +6,80 @@
 					W U T
 				</div>
 			</div>
-			<div class="column is-hidden-desktop has-text-right">
+			<div class="column is-hidden-desktop contact-text">
 				<div class="contact" @click="mailTo">contact</div>
 			</div>
-			<div class="column is-hidden-touch">
-				<div class="nav-option-container has-text-centered">
+			<div class="column is-hidden-touch nav-options-centered">
+				<div class="nav-option-container">
 					<div :class="handleActiveHome()" @click="redirect('home')">Home</div>
 					|
 					<div :class="handleActivePoject()" @click="redirect('project')">
-						Project
+						Projects
 					</div>
 				</div>
 			</div>
-			<div class="column has-text-right is-hidden-touch">
+			<div class="column contact-text is-hidden-touch">
 				<div class="contact" @click="mailTo">contact</div>
 			</div>
 		</div>
-		<div class="column is-hidden-desktop">
-			<div class="nav-option-container has-text-centered">
+		<div class="column is-hidden-desktop nav-options-centered">
+			<div class="nav-option-container">
 				<div :class="handleActiveHome()" @click="redirect('home')">Home</div>
 				|
 				<div :class="handleActivePoject()" @click="redirect('project')">
-					Project
+					Projects
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
-<script>
-export default {
-	data() {
-		return {
-			activeName: "home",
-		}
-	},
-	methods: {
-		redirect(routeName) {
-			this.activeName = routeName
-			this.$router.push({ name: routeName })
-		},
-		handleActiveHome() {
-			if (this.$route.name === "home") {
-				return "option-name link-purple purple"
-			} else {
-				return "option-name link-purple"
-			}
-		},
-		handleActivePoject() {
-			if (this.$route.name === "project") {
-				return "option-name link-green green"
-			} else {
-				return "option-name link-green"
-			}
-		},
-		mailTo() {
-			window.location.href = "mailto:manintu.wut@gmail.com"
-		},
-	},
+<script setup>
+import { ref } from "vue"
+import { useRouter, useRoute } from "vue-router"
+const router = useRouter()
+const route = useRoute()
+let activeName = ref("home")
+
+const redirect = (routeName) => {
+	activeName.value = routeName
+	router.push({ name: routeName })
+}
+
+const handleActiveHome = () => {
+	if (route.name === "home") {
+		return "option-name link-purple purple"
+	} else {
+		return "option-name link-purple"
+	}
+}
+
+const handleActivePoject = () => {
+	if (route.name === "project") {
+		return "option-name link-green green"
+	} else {
+		return "option-name link-green"
+	}
+}
+
+const mailTo = () => {
+	window.location.href = "mailto:manintu.wut@gmail.com"
 }
 </script>
 
 <style scoped>
 .link-orange {
 	display: inline-block;
+}
+.contact-text {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.nav-options-centered {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .contact {
 	display: inline-block;
@@ -80,7 +90,7 @@ export default {
 	cursor: pointer;
 }
 .nav {
-	padding: 50px 30px 30px 30px;
+	padding: 10px 30px 30px 30px;
 }
 .option-name {
 	margin: 0px 10px 0px 10px;
@@ -137,6 +147,10 @@ export default {
 	-webkit-background-clip: text;
 }
 
+.gradient-text:hover {
+	cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	.gradient-text {
 		animation: move-bg 8s linear infinite;
@@ -145,6 +159,13 @@ export default {
 		to {
 			background-position: var(--bg-size) 0;
 		}
+	}
+}
+
+/* iPhone SE */
+@media screen and (max-width: 380px) {
+	.gradient-text {
+		font-size: 2.3rem;
 	}
 }
 </style>
