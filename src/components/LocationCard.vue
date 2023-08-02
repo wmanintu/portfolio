@@ -50,7 +50,7 @@ const initMapboxGLJS = () => {
 	const marker = new mapboxgl.Marker().setLngLat(myMarkerPosition).addTo(map)
 	setTimeout(() => {
 		map.resize()
-	}, 100)
+	}, 800)
 }
 onBeforeMount(() => {})
 onMounted(initMapboxGLJS)
