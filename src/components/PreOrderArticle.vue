@@ -1,49 +1,53 @@
 <template>
-  <div>
-    <p class="title">PreOrder</p>
-    <p class="subtitle">
-      Provides preorder system to friends and co-worker, and keep tracks of who
-      order what in real-time.
-    </p>
-    <div class="content">
-      Vue - Firebase Auth - Firebase Firestore - Element.io
+  <article class="box">
+    <div class="content is-flex-grow-1">
+      <h1 class="title">
+        <a
+          href="https://preorder.wutmanintu.me"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="has-text-link"
+          title="Visit PreOrder App"
+        >
+          PreOrder
+        </a>
+      </h1>
+      <p class="subtitle">
+        A real-time preorder system designed for friends and co-workers to
+        easily place and track orders. Built with Vue.js and Firebase, it
+        provides seamless authentication and live updates as orders are placed.
+        <br /><br />
+        The app streamlines group ordering by allowing users to see what others
+        have ordered in real-time, preventing duplicates and making coordination
+        effortless. Perfect for lunch orders, event planning, or any group
+        purchasing scenario.
+      </p>
+      <p class="is-size-7 has-text-grey is-italic mb-4">
+        Vue - Firebase Auth - Firebase Firestore - Element.io
+      </p>
     </div>
 
-    <font-awesome-icon
-      class="fas fa-globe-americas"
-      icon="fa-solid fa-earth-americas"
-      size="2x"
-      @click="openUrl('https://preorder.wutmanintu.me')"
-    />
-
-    <font-awesome-icon
-      class="fab fa-github"
-      icon="fa-brands fa-github"
-      size="2x"
-      @click="openUrl('https://github.com/wmanintu/preorder')"
-    />
-  </div>
+    <footer>
+      <a
+        href="https://github.com/wmanintu/preorder"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="has-text-link is-flex is-align-items-center"
+        title="Explore the source code on GitHub"
+      >
+        <span>Source Code</span>
+        <span class="icon mr-2">
+          <font-awesome-icon icon="fa-solid fa-arrow-right" />
+        </span>
+      </a>
+    </footer>
+  </article>
 </template>
 
-<script>
-export default {
-  methods: {
-    openUrl(url) {
-      window.open(url, "_blank");
-    },
-  },
-};
+<script setup>
+// No script logic needed - links are handled directly in template
 </script>
 
-<style scoped>
-.fas,
-.fab {
-  font-size: 30px;
-  margin-right: 10px;
-}
-.fas:hover,
-.fab:hover {
-  cursor: pointer;
-  color: #9c9c9c;
-}
+<style lang="scss" scoped>
+// No custom styles needed - using Bulma classes
 </style>

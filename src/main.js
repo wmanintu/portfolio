@@ -15,6 +15,9 @@ import {
   faPlus,
   faSun,
   faMoon,
+  faCopy,
+  faCheck,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -25,7 +28,10 @@ library.add(
   faMinus,
   faPlus,
   faSun,
-  faMoon
+  faMoon,
+  faCopy,
+  faCheck,
+  faCode
 );
 
 createApp(App)

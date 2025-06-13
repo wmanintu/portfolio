@@ -1,30 +1,52 @@
 <template>
-  <div class="content">
-    <p class="title">Photo Gallery</p>
-    <p class="subtitle">
-      All my favorite photos I have taken when I travel around the world. I use
-      a Canon Rebel T3i body, and I use various lens for different situation. My
-      favorite lens are 50mm 1.8f and 70-200mm 4f. The countries I have been to
-      are Thailand, Taiwan, Korea, and Georgia USA <br />
-      Besides programming I love photography and I am self taught because it is
-      fun.
-    </p>
-    <div class="content">React - Imgur - Bulma - Netlify</div>
+  <article class="box">
+    <div class="content is-flex-grow-1">
+      <h1 class="title">
+        <a
+          href="https://photos.wutmanintu.me"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="has-text-link"
+          title="Visit Photo Gallery"
+        >
+          Photo Gallery
+        </a>
+      </h1>
+      <p class="subtitle">
+        A curated collection of my favorite photographs captured during travels
+        across the globe. Shot with a Canon Rebel T3i using primarily a 50mm
+        f/1.8 for portraits and street photography, and a 70-200mm f/4 for
+        landscapes and distant subjects.
+        <br /><br />
+        My photographic journey has taken me through Thailand's bustling
+        markets, Taiwan's mountain landscapes, Korea's vibrant cities, and the
+        scenic beauty of Georgia, USA. Each image tells a story of culture,
+        adventure, and the moments that make travel unforgettable.
+        <br /><br />
+        Photography complements my passion for programming—both require
+        attention to detail, creative problem-solving, and the pursuit of that
+        perfect shot (whether it's a sunset or clean code).
+      </p>
+      <p class="is-size-7 has-text-grey is-italic mb-4">
+        React - Imgur - Bulma - Netlify
+      </p>
+    </div>
 
-    <font-awesome-icon
-      class="fas fa-globe-americas"
-      icon="fa-solid fa-earth-americas"
-      size="2x"
-      @click="openUrl('https://photos.wutmanintu.me')"
-    />
-
-    <font-awesome-icon
-      class="fab fa-github"
-      icon="fa-brands fa-github"
-      size="2x"
-      @click="openUrl('https://photos.wutmanintu.me')"
-    />
-  </div>
+    <footer>
+      <a
+        href="https://github.com/wutmanintu/photo-gallery"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="has-text-link is-flex is-align-items-center"
+        title="Explore the source code on GitHub"
+      >
+        <span>Source Code</span>
+        <span class="icon mr-2">
+          <font-awesome-icon icon="fa-solid fa-arrow-right" />
+        </span>
+      </a>
+    </footer>
+  </article>
 </template>
 
 <script>
@@ -38,14 +60,5 @@ export default {
 </script>
 
 <style scoped>
-.fas,
-.fab {
-  font-size: 30px;
-  margin-right: 10px;
-}
-.fas:hover,
-.fab:hover {
-  cursor: pointer;
-  color: #9c9c9c;
-}
+/* Minimal custom styles - most styling now handled by Bulma classes */
 </style>

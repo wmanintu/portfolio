@@ -1,17 +1,11 @@
 <template>
-  <div class="grid-container">
+  <div class="grid-container mb-6">
     <div class="wrapper">
-      <article class="notification is-primary">
-        <PreOrderArticle />
-      </article>
+      <PreOrderArticle class="preorder-article" />
 
-      <article class="notification is-success">
-        <PhotoGalleryArticle />
-      </article>
+      <PhotoGalleryArticle class="photo-article" />
 
-      <article class="notification is-danger">
-        <YouTubeQueueArticle />
-      </article>
+      <YouTubeQueueArticle class="youtube-article" />
     </div>
   </div>
 </template>
@@ -47,20 +41,20 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     width: 90%;
   }
-  .is-success {
+  .photo-article {
     grid-row: 1 span;
   }
 }
-.is-success {
+.photo-article {
   grid-column: 2 span;
   grid-row: 2 span;
   height: 100%;
 }
-.is-primary {
+.preorder-article {
   grid-column: 2 span;
   height: 100%;
 }
-.is-danger {
+.youtube-article {
   grid-column: 2 span;
   height: 100%;
 }

@@ -6,11 +6,13 @@
         <component :is="Component" />
       </transition>
     </router-view>
+    <Footer />
   </div>
 </template>
 
 <script setup>
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer.vue";
 import { useTheme } from "./composables/useTheme.js";
 
 // Initialize theme system
@@ -20,11 +22,7 @@ initTheme();
 
 <style lang="scss">
 .app {
-  font-family:
-    Menlo,
-    Consolas,
-    DejaVu Sans Mono,
-    monospace;
+  // Font family is handled by individual components via CSS custom properties
   font-size: 14px;
   user-select: none;
 }
