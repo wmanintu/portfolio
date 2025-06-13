@@ -101,6 +101,7 @@ $spotify-color: #1db954;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
