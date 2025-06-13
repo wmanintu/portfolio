@@ -11,50 +11,74 @@
 
 $Poppins-font: "Poppins", sans-serif;
 $Corben-font: "Josefin+Sans", sans-serif;
-$card-border-dark: rgb(112, 112, 112);
-$card-border-light: rgb(228, 228, 228);
 
-.app.dark {
-  background-color: $dark;
-  color: $light;
+// CSS Custom Properties for theming
+:root {
+  --app-bg-color: #{$white-ter};
+  --app-text-color: #{$grey-darker};
+  --card-bg-color: #{$white};
+  --card-border-color: #{$grey-lighter};
+  --card-text-color: #{$grey-darker};
+  --box-shadow-color: #{$grey-lighter};
+  --box-shadow-hover-color: #{$grey-light};
+}
+
+[data-theme="dark"] {
+  --app-bg-color: #{$grey-darker};
+  --app-text-color: #{$white-ter};
+  --card-bg-color: #{$grey-dark};
+  --card-border-color: #{$grey};
+  --card-text-color: #{$white-ter};
+  --box-shadow-color: #{$grey};
+  --box-shadow-hover-color: #{$grey-light};
+}
+
+// Fix rubber band scrolling background
+html, body {
+  background-color: var(--app-bg-color);
+  transition: background-color 0.3s ease;
+}
+
+// App styling using CSS custom properties
+.app {
+  background-color: var(--app-bg-color);
+  color: var(--app-text-color);
   min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
-.app.dark .title {
-  color: $light;
+.title {
+  color: var(--app-text-color);
 }
 
-.app.dark .subtitle {
-  color: $light;
+.subtitle {
+  color: var(--app-text-color);
 }
 
-.app.dark strong {
-  color: $light;
-}
-
-.app.dark .card {
-  background-color: $dark;
-  border-style: solid;
-  border-color: $card-border-dark;
-  color: $light;
-  border-radius: 32px;
-}
-
-.app .card {
-  background-color: $light;
-  border-style: solid;
-  border-color: $card-border-light;
-  border-radius: 32px;
-}
-
-.app.dark .card .content {
-  color: white;
+strong {
+  font-family: $Corben-font;
+  font-size: 25px;
+  color: var(--app-text-color);
 }
 
 .card {
   font-family: $Poppins-font;
   font-size: 16px;
   height: 100%;
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: 32px;
+  color: var(--card-text-color);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.card .content {
+  color: var(--card-text-color);
 }
 
 .nav {
@@ -62,40 +86,22 @@ $card-border-light: rgb(228, 228, 228);
   font-size: 16px;
 }
 
-strong {
-  font-family: $Corben-font;
-  font-size: 25px;
-}
-
 // Animated expand button
-
-$box-shadow-dark: $card-border-dark 0px 0px 0px 2px;
-$box-shadow-dark-hover: $card-border-dark 0px 0px 0px 5px;
-
-$box-shadow-light: $card-border-light 0px 0px 0px 2px;
-$box-shadow-light-hover: $card-border-light 0px 0px 0px 5px;
-
-.dark .expand-container {
-  background-color: $dark;
-  color: $light;
-  box-shadow: $box-shadow-dark;
-}
-
-.dark .expand-container:hover {
-  box-shadow: $box-shadow-dark-hover;
-}
-
 .expand-container {
-  color: $dark;
-  box-shadow: $box-shadow-light;
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  box-shadow: var(--box-shadow-color) 0px 0px 0px 2px;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .expand-container:hover {
-  box-shadow: $box-shadow-light-hover;
+  box-shadow: var(--box-shadow-hover-color) 0px 0px 0px 5px;
 }
 
 // Mapbox
-
 .mapboxgl-ctrl-logo {
   display: none !important;
 }
@@ -108,20 +114,17 @@ $box-shadow-light-hover: $card-border-light 0px 0px 0px 5px;
   border-radius: 32px;
 }
 
-.app.dark .zoom-button {
-  background-color: $dark;
-  color: $light;
-  border-color: $card-border-dark;
-}
-.app.dark .zoom-button:hover {
-  box-shadow: $box-shadow-dark-hover;
+.zoom-button {
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  border-color: var(--card-border-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.app .zoom-button {
-  background-color: $light;
-  color: $dark;
-  border-color: $card-border-light;
-}
-.app .zoom-button:hover {
-  box-shadow: $box-shadow-light-hover;
+.zoom-button:hover {
+  box-shadow: var(--box-shadow-hover-color) 0px 0px 0px 5px;
 }

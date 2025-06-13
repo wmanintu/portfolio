@@ -20,12 +20,12 @@
 
 <script setup>
 import { ref, onMounted, onBeforeMount, watch } from "vue";
-import { useDark } from "@vueuse/core";
+import { useTheme } from "../composables/useTheme.js";
 import mapboxgl from "mapbox-gl";
 
 const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 const myMarkerPosition = [-84.550866, 33.997852];
-let isDark = useDark();
+const { isDark } = useTheme();
 let map = ref(null);
 let button = ref({ isZoomOut: true, isZoomIn: false });
 const zoomRange = ref([11, 5, 2]);
