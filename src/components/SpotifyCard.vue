@@ -1,37 +1,112 @@
 <template>
   <div class="card">
-    <div class="spotify-container">
-      <font-awesome-icon icon="fa-brands fa-spotify" size="2x" />
-      <div v-if="currentSong">
-        <div class="spotify-info">
-          <div class="spotify-now-playing">
-            <div class="playing-indicator_container">
-              <div class="playing-bar bar1"></div>
-              <div class="playing-bar bar2"></div>
-              <div class="playing-bar bar3"></div>
-            </div>
-            <span>last played</span>
-          </div>
-          <!-- <img :src="currentSong.albumImage" :alt="currentSong.name" /> -->
-          <strong class="track-name" :title="currentSong.name">{{
-            currentSong.name
-          }}</strong>
-          <p class="artist-names" :title="currentSong.artist">
-            {{ currentSong.artist }}
-          </p>
+    <div class="card-content">
+      <div class="spotify-container">
+        <div class="spotify-header">
+          <font-awesome-icon icon="fa-brands fa-spotify" size="2x" />
         </div>
-      </div>
-      <div class="spotify-loading" v-else>
-        <p>Loading...</p>
+
+        <div class="spotify-content">
+          <div v-if="currentSong" class="spotify-info">
+            <div class="spotify-now-playing">
+              <div class="playing-indicator_container">
+                <div class="playing-bar bar1"></div>
+                <div class="playing-bar bar2"></div>
+                <div class="playing-bar bar3"></div>
+              </div>
+              <span>last played</span>
+            </div>
+            <!-- <img :src="currentSong.albumImage" :alt="currentSong.name" /> -->
+            <div class="track-info">
+              <div
+                class="track-name-container"
+                :class="{ 'long-text': isLongSongName }"
+              >
+                <strong class="track-name" :title="currentSong.name">
+                  <span class="track-text">{{ currentSong.name }}</span>
+                </strong>
+              </div>
+              <button
+                class="copy-button"
+                @click="copySongName"
+                :title="`Copy '${currentSong.name}' to clipboard`"
+              >
+                <font-awesome-icon :icon="copyIcon" size="sm" />
+              </button>
+            </div>
+            <p class="artist-names" :title="currentSong.artist">
+              {{ currentSong.artist }}
+            </p>
+          </div>
+
+          <div class="spotify-loading" v-else>
+            <p>Loading...</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
+
 const currentSong = ref(null);
 const accessToken = ref("");
+const copySuccess = ref(false);
+
+// Computed property for copy icon
+const copyIcon = computed(() => {
+  return copySuccess.value ? "fa-solid fa-check" : "fa-solid fa-copy";
+});
+
+// Check if song name is longer than 15 characters
+const isLongSongName = computed(() => {
+  return currentSong.value?.name && currentSong.value.name.length > 15;
+});
+
+// Copy song name to clipboard
+const copySongName = async () => {
+  if (!currentSong.value?.name) return;
+
+  try {
+    await navigator.clipboard.writeText(currentSong.value.name);
+    copySuccess.value = true;
+
+    // Reset icon after 2 seconds
+    setTimeout(() => {
+      copySuccess.value = false;
+    }, 2000);
+  } catch (error) {
+    console.error("Failed to copy song name:", error);
+    // Fallback for older browsers
+    fallbackCopy(currentSong.value.name);
+  }
+};
+
+// Fallback copy method for older browsers
+const fallbackCopy = (text) => {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.position = "fixed";
+  textArea.style.left = "-999999px";
+  textArea.style.top = "-999999px";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    document.execCommand("copy");
+    copySuccess.value = true;
+    setTimeout(() => {
+      copySuccess.value = false;
+    }, 2000);
+  } catch (error) {
+    console.error("Fallback copy failed:", error);
+  }
+
+  document.body.removeChild(textArea);
+};
 
 const getAccessToken = async () => {
   try {
@@ -96,43 +171,152 @@ onMounted(getAccessToken);
 <style lang="scss" scoped>
 $spotify-color: #1db954;
 
-.track-name,
-.artist-names {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+.card-content {
+  height: 100%;
+  padding: 0;
 }
 
-.spotify-now-playing {
-  display: flex;
-  color: $spotify-color;
-}
-.fa-spotify {
-  color: $spotify-color;
-  position: absolute;
-  left: 25px;
-  top: 25px;
-}
 .spotify-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 28px 32px;
+  height: 100%;
+  padding: 1.5rem;
+}
+
+.spotify-header {
+  flex-shrink: 0;
+  margin-bottom: auto;
+}
+
+.fa-spotify {
+  color: $spotify-color;
+}
+
+.spotify-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0; // Important for text ellipsis to work properly
 }
 
 .spotify-info,
 .spotify-loading {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
+  width: 100%;
+  min-width: 0; /* Important for text ellipsis in flex containers */
+}
+
+.spotify-now-playing {
+  display: flex;
+  align-items: center;
+  color: $spotify-color;
+  margin-bottom: 0.5rem;
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0; /* Important for text ellipsis */
+}
+
+.track-name-container {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+
+  &:not(.long-text) .track-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &.long-text {
+    .track-name {
+      white-space: nowrap;
+      overflow: hidden;
+
+      .track-text {
+        display: inline-block;
+        animation: none;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &:hover .track-name .track-text {
+      animation: slide-text 8s linear infinite;
+    }
+  }
+}
+
+.track-name,
+.artist-names {
+  margin: 0;
+  line-height: 1.4;
+  display: block; /* Ensure block display for ellipsis */
+}
+
+.track-name {
+  font-weight: 600;
+  margin-bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+@keyframes slide-text {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(calc(-100% + 200px));
+  }
+  100% {
+    transform: translateX(calc(-100% + 200px));
+  }
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  // color: $spotify-color;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  flex-shrink: 0;
+  min-width: 24px;
+  height: 24px;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  // Success state styling
+  &.copied {
+    color: #28a745;
+  }
+}
+
+.artist-names {
+  font-size: 0.9em;
+  opacity: 0.8;
 }
 
 .playing-indicator_container {
   height: 20px;
-  margin-right: 4px;
+  margin-right: 0.5rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -149,9 +333,11 @@ $spotify-color: #1db954;
 .bar1 {
   animation: playing 0.85s infinite ease;
 }
+
 .bar2 {
   animation: playing 1.26s infinite ease;
 }
+
 .bar3 {
   animation: playing 0.62s infinite ease;
 }
@@ -167,6 +353,17 @@ $spotify-color: #1db954;
 
   100% {
     height: 3px;
+  }
+}
+
+.spotify-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+    opacity: 0.6;
   }
 }
 </style>

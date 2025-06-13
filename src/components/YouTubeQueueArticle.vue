@@ -1,47 +1,56 @@
 <template>
-  <div>
-    <p class="title">Youtube Queue</p>
-    <p class="subtitle">
-      Search and create music queue locally, and will implement realtime next.
-      The purpose was to teach myself React and Redux.
-    </p>
-    <div class="content">React - Redux - Youtube API - Bootstrap</div>
+  <article class="box">
+    <div class="content is-flex-grow-1">
+      <h1 class="title">
+        <a
+          href="https://music.wutmanintu.me"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="has-text-link"
+          title="Visit YouTube Queue App"
+        >
+          YouTube Queue
+        </a>
+      </h1>
+      <p class="subtitle">
+        A music queue application that allows users to search and create custom
+        playlists locally. Built as a learning project to explore modern web
+        development patterns and API integration.
+        <br /><br />
+        The app leverages the YouTube API to search for music videos and create
+        personalized queues. Users can easily browse, select, and organize their
+        favorite tracks for a seamless listening experience.
+        <br /><br />
+        This project showcases the integration of third-party APIs and
+        responsive design principles to create an intuitive music discovery
+        platform.
+      </p>
+      <p class="is-size-7 has-text-grey is-italic mb-4">
+        React - Redux - YouTube API - Bootstrap
+      </p>
+    </div>
 
-    <font-awesome-icon
-      class="fas fa-globe-americas"
-      icon="fa-solid fa-earth-americas"
-      size="2x"
-      @click="openUrl('https://music.wutmanintu.me')"
-    />
-
-    <font-awesome-icon
-      class="fab fa-github"
-      icon="fa-brands fa-github"
-      size="2x"
-      @click="openUrl('https://github.com/wmanintu/youtube-queue')"
-    />
-  </div>
+    <footer>
+      <a
+        href="https://github.com/wmanintu/youtube-queue"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="has-text-link is-flex is-align-items-center"
+        title="Explore the source code on GitHub"
+      >
+        <span>Source Code</span>
+        <span class="icon mr-2">
+          <font-awesome-icon icon="fa-solid fa-arrow-right" />
+        </span>
+      </a>
+    </footer>
+  </article>
 </template>
 
-<script>
-export default {
-  methods: {
-    openUrl(url) {
-      window.open(url, "_blank");
-    },
-  },
-};
+<script setup>
+// No script logic needed - links are handled directly in template
 </script>
 
-<style scoped>
-.fas,
-.fab {
-  font-size: 30px;
-  margin-right: 10px;
-}
-.fas:hover,
-.fab:hover {
-  cursor: pointer;
-  color: #9c9c9c;
-}
+<style lang="scss" scoped>
+// No custom styles needed - using Bulma classes
 </style>
