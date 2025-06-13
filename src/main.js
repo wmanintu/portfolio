@@ -17,6 +17,7 @@ import {
   faMoon,
   faCopy,
   faCheck,
+  faCheckCircle,
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,6 +32,7 @@ library.add(
   faMoon,
   faCopy,
   faCheck,
+  faCheckCircle,
   faCode
 );
 

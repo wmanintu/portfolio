@@ -29,7 +29,7 @@
               <button
                 class="copy-button"
                 @click="copySongName"
-                :title="`Copy '${currentSong.name}' to clipboard`"
+                :title="`Copy '${currentSong.name} by ${currentSong.artist}' to clipboard`"
               >
                 <font-awesome-icon :icon="copyIcon" size="sm" />
               </button>
@@ -65,12 +65,14 @@ const isLongSongName = computed(() => {
   return currentSong.value?.name && currentSong.value.name.length > 15;
 });
 
-// Copy song name to clipboard
+// Copy song name and artist to clipboard
 const copySongName = async () => {
-  if (!currentSong.value?.name) return;
+  if (!currentSong.value?.name || !currentSong.value?.artist) return;
+
+  const textToCopy = `${currentSong.value.name} by ${currentSong.value.artist}`;
 
   try {
-    await navigator.clipboard.writeText(currentSong.value.name);
+    await navigator.clipboard.writeText(textToCopy);
     copySuccess.value = true;
 
     // Reset icon after 2 seconds
@@ -78,9 +80,9 @@ const copySongName = async () => {
       copySuccess.value = false;
     }, 2000);
   } catch (error) {
-    console.error("Failed to copy song name:", error);
+    console.error("Failed to copy song info:", error);
     // Fallback for older browsers
-    fallbackCopy(currentSong.value.name);
+    fallbackCopy(textToCopy);
   }
 };
 
