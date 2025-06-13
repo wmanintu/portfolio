@@ -137,7 +137,7 @@ const mailTo = () => {
 
 .gradient-text {
   --bg-size: 400%;
-  --color-one: hsl(0deg 95% 55%);
+  --color-one: hsl(64, 95%, 55%);
   --color-two: hsl(111.82deg 68.62% 53.02%);
   --color-three: hsl(237.94deg 95% 55%);
   font-family: sans-serif;
